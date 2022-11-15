@@ -1,12 +1,17 @@
 package springpractica.demo.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 
 @Entity
 @Table(name="mensaje")
@@ -15,10 +20,20 @@ public class Mensaje {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long id_origen;
-	private Long id_destino;
+	
 	private String texto;
-	private Timestamp fecha;
+	
+	@CreationTimestamp
+	private Date fecha;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_origen", nullable = false)
+	private Gestor gestorOrigen;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_destino", nullable = false)
+	private Gestor gestorDestino;
+
 	
 	public Mensaje() {
 		
@@ -32,21 +47,6 @@ public class Mensaje {
 		this.id = id;
 	}
 
-	public Long getId_origen() {
-		return id_origen;
-	}
-
-	public void setId_origen(Long id_origen) {
-		this.id_origen = id_origen;
-	}
-
-	public Long getId_destino() {
-		return id_destino;
-	}
-
-	public void setId_destino(Long id_destino) {
-		this.id_destino = id_destino;
-	}
 
 	public String getTexto() {
 		return texto;
@@ -56,11 +56,27 @@ public class Mensaje {
 		this.texto = texto;
 	}
 
-	public Timestamp getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Timestamp fecha) {
+	public Gestor getGestorOrigen() {
+		return gestorOrigen;
+	}
+
+	public void setGestorOrigen(Gestor gestorOrigen) {
+		this.gestorOrigen = gestorOrigen;
+	}
+
+	public Gestor getGestorDestino() {
+		return gestorDestino;
+	}
+
+	public void setGestorDestino(Gestor gestorDestino) {
+		this.gestorDestino = gestorDestino;
+	}
+
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 	

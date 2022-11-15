@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,11 +15,17 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long id_gestor;
 	private String usuario;
 	private String password;
 	private String correo;
 	private Double saldo;
+	@ManyToOne
+	@JoinColumn(name = "gestor_id", nullable = false)
+	private Gestor gestor;
+	
+	
+
+	
 
 	public Cliente() {
 		
@@ -31,13 +39,6 @@ public class Cliente {
 		this.id = id;
 	}
 
-	public Long getId_gestor() {
-		return id_gestor;
-	}
-
-	public void setId_gestor(Long id_gestor) {
-		this.id_gestor = id_gestor;
-	}
 
 	public String getUsuario() {
 		return usuario;
@@ -69,6 +70,14 @@ public class Cliente {
 
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
+	}
+	
+	public Gestor getGestor() {
+		return gestor;
+	}
+
+	public void setGestor(Gestor gestor) {
+		this.gestor = gestor;
 	}
 	
 	

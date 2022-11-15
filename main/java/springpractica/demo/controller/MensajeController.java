@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,39 +12,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import springpractica.demo.model.Cliente;
-import springpractica.demo.service.ClienteService;
 
+import springpractica.demo.model.Mensaje;
+import springpractica.demo.service.MensajeService;
 
 @RestController
-@RequestMapping(path ="/cliente")
-public class ClienteController {
+@RequestMapping(path ="/mensaje")
+public class MensajeController {
 
 	@Autowired
-	ClienteService clienteService;
+	MensajeService mensajeService;
 	
 	
 	@GetMapping()
-	public ArrayList<Cliente> obtenerClientes(){
+	public ArrayList<Mensaje> obtenerMensajes(){
 		
-		return this.clienteService.obtenerClientes();
+		return this.mensajeService.obtenerMensajes();
 	}
 	
 	@GetMapping(path="/{id}")
-	public Optional<Cliente> obtenerCliente(@PathVariable("id") Long id){
+	public Optional<Mensaje> obtenerMensaje(@PathVariable("id") Long id){
 		
-		return this.clienteService.obtenerCliente(id);
+		return this.mensajeService.obtenerMensaje(id);
 	}
 	
 	@PostMapping()
-	public Cliente guardarCliente(@RequestBody Cliente cliente) {
+	public Mensaje guardarMensaje(@RequestBody Mensaje mensaje) {
 		
-		return this.clienteService.guardarCliente(cliente);
+		return this.mensajeService.guardarMensaje(mensaje);
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public boolean borrarCliente(@PathVariable("id") Long id){
+	public boolean borrarMensaje(@PathVariable("id") Long id){
 		
-		return this.clienteService.borrarCliente(id);
+		return this.mensajeService.borrarMensaje(id);
 	}
+
 }

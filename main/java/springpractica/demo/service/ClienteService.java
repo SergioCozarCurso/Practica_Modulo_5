@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import springpractica.demo.model.Cliente;
 import springpractica.demo.repository.ClienteRepository;
 
 
-
+@Service
 public class ClienteService {
 
 	@Autowired
