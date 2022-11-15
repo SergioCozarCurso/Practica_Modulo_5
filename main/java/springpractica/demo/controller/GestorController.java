@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -48,6 +49,18 @@ public class GestorController {
 	public boolean borrarGestor(@PathVariable("id") Long id){
 		
 		return this.gestorService.borrarGestor(id);
+	}
+	
+	@GetMapping(path="/correo/{correo}")
+	public Optional<Gestor> obtenerConCorreo(@PathVariable("correo") String correo){
+		
+		return this.gestorService.obtenerConCorreo(correo);
+	}
+	
+	@GetMapping(path="/login")
+	public Optional<Gestor> obtenerConCorreoAndPassword(@RequestParam("correo") String correo, @RequestParam("password") String password){
+		
+		return this.gestorService.obtenerConCorreoAndPassword(correo, password);
 	}
 
 }
