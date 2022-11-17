@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import springpractica.demo.model.Cliente;
@@ -47,5 +48,17 @@ public class ClienteController {
 	public boolean borrarCliente(@PathVariable("id") Long id){
 		
 		return this.clienteService.borrarCliente(id);
+	}
+	
+	@GetMapping(path="/correo/{correo}")
+	public Optional<Cliente> obtenerConCorreo(@PathVariable("correo") String correo){
+		
+		return this.clienteService.obtenerConCorreo(correo);
+	}
+	
+	@GetMapping(path="/login")
+	public Optional<Cliente> obtenerConCorreoAndPassword(@RequestParam("correo") String correo, @RequestParam("password") String password){
+		
+		return this.clienteService.obtenerConCorreoAndPassword(correo, password);
 	}
 }

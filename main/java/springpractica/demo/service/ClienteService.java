@@ -47,5 +47,15 @@ public class ClienteService {
 			return false;
 		}
 	}
+	
+	// Obtener por correo
+	public Optional<Cliente> obtenerConCorreo(String correo){
+		return this.clienteRepository.findByCorreo(correo);
+	}
+	
+	// Login 
+	public Optional<Cliente> obtenerConCorreoAndPassword(String correo, String password){
+		return this.clienteRepository.findByCorreoAndPassword(correo, password);
+	}
 
 }
