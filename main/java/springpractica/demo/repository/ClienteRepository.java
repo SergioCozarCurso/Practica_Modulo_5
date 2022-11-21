@@ -1,5 +1,6 @@
 package springpractica.demo.repository;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -14,6 +15,8 @@ public interface ClienteRepository extends CrudRepository<Cliente, Long>{
 	public Optional<Cliente> findByCorreo (String correo);
 	
 	public Optional<Cliente> findByCorreoAndPassword (String correo, String password);
+	
+	public ArrayList<Cliente> findByGestorId (Long id);
 
 }
 

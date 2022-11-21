@@ -57,5 +57,9 @@ public class ClienteService {
 	public Optional<Cliente> obtenerConCorreoAndPassword(String correo, String password){
 		return this.clienteRepository.findByCorreoAndPassword(correo, password);
 	}
+	
+	public ArrayList<Cliente> obtenerPorIdGestor(Long id){
+		return this.clienteRepository.findByGestorId(id);
+	}
 
 }
