@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import springpractica.demo.model.Transferencia;
 import springpractica.demo.repository.TransferenciaRepository;
 
@@ -49,6 +50,14 @@ public class TransferenciaService {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public ArrayList<Transferencia> obtenerPorClienteOrdenanteId(Long id){
+		return this.transferenciaRepository.findByclienteOrdenanteId(id);
+	}
+	
+	public ArrayList<Transferencia> obtenerPorIdClienteBeneficiarioId(Long id){
+		return this.transferenciaRepository.findByclienteBeneficiarioId(id);
 	}
 
 }

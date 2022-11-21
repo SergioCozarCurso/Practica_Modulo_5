@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import springpractica.demo.model.Transferencia;
 import springpractica.demo.service.TransferenciaService;
 
@@ -50,6 +51,20 @@ public class TransferenciaController {
 	public boolean borrarTransferencia(@PathVariable("id") Long id){
 		
 		return this.transferenciaService.borrarTransferencia(id);
+	}
+	
+	@GetMapping(path="/cliente-ordenante/{idCliente}")
+	public ArrayList<Transferencia> obtenerPorClienteOrdenanteId(@PathVariable("idCliente") Long id){
+		
+		return this.transferenciaService.obtenerPorClienteOrdenanteId(id);
+		
+	}
+	
+	@GetMapping(path="/cliente-beneficiario/{idCliente2}")
+	public ArrayList<Transferencia> obtenerPorIdClienteBeneficiarioId(@PathVariable("idCliente2") Long id){
+		
+		return this.transferenciaService.obtenerPorIdClienteBeneficiarioId(id);
+		
 	}
 
 }
