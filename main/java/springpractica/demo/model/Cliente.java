@@ -23,6 +23,7 @@ public class Cliente {
 	@JoinColumn(name = "gestor_id", nullable = false)
 	private Gestor gestor;
 	
+	private boolean activo;
 	
 
 	
@@ -33,6 +34,14 @@ public class Cliente {
 
 	public Long getId() {
 		return id;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 	public void setId(Long id) {
